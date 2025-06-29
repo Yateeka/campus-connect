@@ -58,7 +58,7 @@ export default function Dashboard() {
                         {visibleItems.map((label, idx) => (
                             <div
                                 key={idx}
-                                className="w-[280px] h-[170px] bg-white text-blue-900 rounded-2xl flex items-center justify-center font-semibold text-center text-lg hover:scale-105 transition"
+                                className="w-[280px] h-[170px] bg-white text-blue-900 rounded-2xl flex items-center justify-center font-semibold text-center text-lg hover:scale-105 transition underline"
                             >
                                 {label}
                             </div>

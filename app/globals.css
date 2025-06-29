@@ -16,7 +16,6 @@ body {
     background: var(--background);
     color: var(--foreground);
     font-family: 'Times New Roman', Times, serif;
-    text-decoration: underline;
 }
 
 /* Hide scrollbar for scrollable sections */
