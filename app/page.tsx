@@ -12,10 +12,10 @@ export default function Dashboard() {
 		{ label: "HOUSING & JOBS", icon: "/housing.svg" },
 		{ label: "FINANCE", icon: "/finance.svg" },
 		{ label: "HEALTH", icon: "/health.svg" },
-		{ label: "EVENTS & ACTIVITIES", icon: "/globe.svg" },
-		{ label: "TRANSPORTATION", icon: "/window.svg" },
-		{ label: "CAMPUS LIFE", icon: "/vercel.svg" },
-		{ label: "TECHNOLOGY & RESOURCES", icon: "/next.svg" },
+		{ label: "EVENTS & ACTIVITIES", icon: "/events.svg" },
+		{ label: "TRANSPORTATION", icon: "/transport.svg" },
+		{ label: "CAMPUS LIFE", icon: "/campus.svg" },
+		{ label: "TECHNOLOGY & RESOURCES", icon: "/tech.svg" },
 	];
 
 	const [startIndex, setStartIndex] = useState(0);
