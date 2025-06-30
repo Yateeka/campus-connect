@@ -1,7 +1,11 @@
 'use client';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 export default function Dashboard() {
+    const pathname = usePathname();
+
     const items = [
         "ESSENTIAL & SERVICES",
         "COMMUNITY & SUPPORT",
@@ -35,8 +39,26 @@ export default function Dashboard() {
             {/* Navbar */}
             <nav className="w-full flex items-center justify-between px-10 py-6 text-white">
                 <div className="space-x-10 text-lg font-semibold">
-                    <a href="#" className="underline">HOME</a>
-                    <a href="#" className="underline">ABOUT US</a>
+                    <Link
+                        href="/"
+                        className={`underline-offset-4 decoration-2 ${
+                            pathname === '/'
+                                ? 'underline text-blue-300'
+                                : 'text-white hover:text-blue-300'
+                        }`}
+                    >
+                        HOME
+                    </Link>
+                    <Link
+                        href="/About"
+                        className={`underline-offset-4 decoration-2 ${
+                            pathname.startsWith('/About')
+                                ? 'underline text-blue-300'
+                                : 'text-white hover:text-blue-300'
+                        }`}
+                    >
+                        ABOUT US
+                    </Link>
                 </div>
                 <img
                     src="/profile.svg"
@@ -49,7 +71,11 @@ export default function Dashboard() {
             <div className="flex flex-col justify-center items-center h-[calc(100vh-10rem)]">
                 <div className="flex items-center">
                     {/* Left Arrow */}
-                    <button onClick={handlePrev} className="mr-6 text-white text-3xl hover:scale-110 transition disabled:opacity-30" disabled={startIndex === 0}>
+                    <button
+                        onClick={handlePrev}
+                        className="mr-6 text-white text-3xl hover:scale-110 transition disabled:opacity-30"
+                        disabled={startIndex === 0}
+                    >
                         ◀
                     </button>
 
@@ -66,21 +92,21 @@ export default function Dashboard() {
                     </div>
 
                     {/* Right Arrow */}
-                    <button onClick={handleNext} className="ml-6 text-white text-3xl hover:scale-110 transition disabled:opacity-30" disabled={startIndex + 6 >= items.length}>
+                    <button
+                        onClick={handleNext}
+                        className="ml-6 text-white text-3xl hover:scale-110 transition disabled:opacity-30"
+                        disabled={startIndex + 6 >= items.length}
+                    >
                         ▶
                     </button>
                 </div>
             </div>
 
             {/* Footer */}
-            <footer className="absolute bottom-4 right-6 flex items-center gap-2 text-white text-xl font-bold underline">
+            <footer className="absolute bottom-4 right-6 flex items-center gap-3 text-white text-xl font-bold underline">
                 <img src="/logo.svg" alt="Logo" className="w-30 h-30 object-contain" />
                 <span className="align-middle leading-none">CAMPUS CONNECT</span>
             </footer>
-
-
-
-
         </div>
     );
 }
