@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
-:root {
-    --background: #ffffff;
-    --foreground: #171717;
+\:root {
+    --foreground: #0A2D81; /* deep blue */
 }
+
 
 @media (prefers-color-scheme: dark) {
     :root {
@@ -13,10 +13,12 @@
 }
 
 body {
-    background: var(--background);
+    background: url('/background.png') no-repeat center center fixed;
+    background-size: cover;
     color: var(--foreground);
     font-family: 'Times New Roman', Times, serif;
 }
+
 
 /* Hide scrollbar for scrollable sections */
 .scrollbar-hide::-webkit-scrollbar {
