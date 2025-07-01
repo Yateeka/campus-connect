@@ -87,7 +87,7 @@ export default function Dashboard() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full px-2 max-w-[960px]">
             {visibleItems.map((item, idx) => (
-              <div key={idx} className="h-[260px] sm:h-[300px] lg:h-[280px]">
+              <div key={idx} className="flex justify-center h-[260px] sm:h-[300px] lg:h-[280px]">
                 <FlippableCard
                   label={item.label}
                   icon={item.icon}
