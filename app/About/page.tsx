@@ -1,7 +1,7 @@
 'use client';
 import Navbar from '../components/Navbar';
 import HelpAssistant from '../components/HelpAssistant';
-import Footer from '../components/Footer';
+import Footer from './Footer';
 export default function AboutPage() {
     return (
         <div className="min-h-screen text-[#0A2D81] px-6 py-6 relative">

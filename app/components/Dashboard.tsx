@@ -1,9 +1,10 @@
 'use client';
+
 import { useState } from 'react';
-import Navbar from './components/Navbar';
-import HelpAssistant from './components/HelpAssistant';
-import Footer from './About/Footer';
-import FlippableCard from './components/FlippableCard';
+import Navbar from './Navbar';
+import HelpAssistant from './HelpAssistant';
+// import Footer from './About/Footer';
+import FlippableCard from './FlippableCard';
 
 export default function Dashboard() {
   const items = [
@@ -11,52 +12,38 @@ export default function Dashboard() {
       label: "ESSENTIAL & SERVICES",
       icon: "/backpack.svg",
       description: "Access food, supplies, immigration help, and more.",
-    },
-    {
-      label: "COMMUNITY & SUPPORT",
-      icon: "/community.svg",
-      description: "Clubs, peer mentoring, and safe spaces.",
+      link: "/services"
     },
     {
       label: "ACADEMIC",
       icon: "/academic.svg",
       description: "Resources for tutoring, advising, and course planning.",
-    },
-    {
-      label: "HOUSING & JOBS",
-      icon: "/housing.svg",
-      description: "Find affordable housing and student jobs.",
+      link: "/academic"
     },
     {
       label: "FINANCE",
       icon: "/finance.svg",
       description: "Help with financial aid, banking, and budgeting.",
+      link: "/finance"
+    },
+    {
+      label: "COMMUNITY & SUPPORT",
+      icon: "/community.svg",
+      description: "Clubs, peer mentoring, and safe spaces.",
+      link: "/community"
+    },
+    {
+      label: "HOUSING & JOBS",
+      icon: "/housing.svg",
+      description: "Find affordable housing and student jobs.",
+      link: "/housing"
     },
     {
       label: "HEALTH",
       icon: "/health.svg",
       description: "Physical and mental health support.",
-    },
-    {
-      label: "EVENTS & ACTIVITIES",
-      icon: "/events.svg",
-      description: "Stay updated on campus events and activities.",
-    },
-    {
-      label: "TRANSPORTATION",
-      icon: "/transport.svg",
-      description: "Campus shuttles, public transit info, and more.",
-    },
-    {
-      label: "CAMPUS LIFE",
-      icon: "/campus.svg",
-      description: "Explore clubs, organizations, and student life.",
-    },
-    {
-      label: "TECHNOLOGY & RESOURCES",
-      icon: "/tech.svg",
-      description: "IT support, software, and campus resources.",
-    },
+      link: "/health"
+    }
   ];
 
   const [startIndex, setStartIndex] = useState(0);
@@ -80,19 +67,21 @@ export default function Dashboard() {
             onClick={handlePrev}
             className="text-4xl sm:text-5xl hover:scale-110 transition disabled:opacity-30"
             disabled={startIndex === 0}
-            aria-label="Previous page"
           >
             ◀
           </button>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full px-2 max-w-[960px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-[960px]">
             {visibleItems.map((item, idx) => (
-              <div key={idx} className="h-[260px] sm:h-[260px] lg:h-[280px]">
+              <div
+                key={idx}
+                className="w-full h-[150px] sm:h-[160px] lg:h-[160px] bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-3xl flex flex-col items-center justify-center font-semibold text-[#0A2D81] text-center text-xl sm:text-2xl hover:scale-105 transition"
+              >
                 <FlippableCard
                   label={item.label}
                   icon={item.icon}
                   description={item.description}
-                  link="#"
+                  link={item.link}
                 />
               </div>
             ))}
@@ -102,7 +91,6 @@ export default function Dashboard() {
             onClick={handleNext}
             className="text-4xl sm:text-5xl hover:scale-110 transition disabled:opacity-30"
             disabled={startIndex + 6 >= items.length}
-            aria-label="Next page"
           >
             ▶
           </button>
@@ -110,7 +98,6 @@ export default function Dashboard() {
       </main>
 
       <HelpAssistant />
-      <Footer />
     </div>
   );
 }
