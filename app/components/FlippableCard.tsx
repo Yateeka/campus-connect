@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-
 interface FlippableCardProps {
   label: string;
   icon: string;
@@ -10,31 +8,21 @@ interface FlippableCardProps {
 }
 
 export default function FlippableCard({ label, icon, description, link }: FlippableCardProps) {
-  const [flipped, setFlipped] = useState(false);
+  // Generate a class name based on the icon file name
+  const iconClass = `icon-${icon.split('/').pop()?.split('.')[0]}`; // e.g. "icon-backpack"
 
   return (
-    <div
-      className="flip-card w-full h-full cursor-pointer"
-      onClick={() => setFlipped(!flipped)}
-      role="button"
-      tabIndex={0}
-      onKeyDown={e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          setFlipped(!flipped);
-        }
-      }}
-      aria-pressed={flipped}
-    >
-      <div className={`flip-inner relative w-full h-full ${flipped ? 'flipped' : ''}`}>
+    <div className="flip-card w-full h-full cursor-pointer group">
+      <div className="flip-inner relative w-full h-full transition-transform duration-1000 transform-style-preserve-3d group-hover:rotate-y-180">
         {/* Front Side */}
-        <div className="flip-front flex flex-col items-center justify-center">
-          <img src={icon} alt={`${label} icon`} className="w-12 h-12 mb-3" />
-          <h2 className="text-lg font-semibold text-[#0A2D81]">{label}</h2>
+        <div className="flip-front absolute w-full h-full backface-hidden flex flex-col items-center justify-center rounded-xl bg-white shadow-md p-4">
+          <img src={icon} alt={`${label} icon`} className={`w-12 h-12 mb-3 ${iconClass}`} />
+          <h2 className="text-lg font-semibold text-[#0A2D81] text-center">{label}</h2>
         </div>
 
         {/* Back Side */}
-        <div className="flip-back flex items-center justify-center">
-          <p className="text-center">{description}</p>
+        <div className="flip-back absolute w-full h-full backface-hidden transform rotate-y-180 flex items-center justify-center rounded-xl bg-blue-100 shadow-md p-4">
+          <p className="text-center text-sm">{description}</p>
         </div>
       </div>
     </div>

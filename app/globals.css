@@ -13,11 +13,16 @@
 }
 
 body {
-    background: url('/background.png') no-repeat center center fixed;
-    background-size: cover;
-    color: var(--foreground);
-    font-family: 'Times New Roman', Times, serif;
+  margin: 0;
+  padding: 0;
+  background: url('/background.png') no-repeat center center fixed;
+  background-size: cover;
+  background-color: #84b5ff; /* replace with your light blue or gradient base */
+  font-family: 'Times New Roman', Times, serif;
+  color: var(--foreground);
+  overflow-x: hidden;
 }
+
 
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
@@ -63,7 +68,68 @@ body {
 }
 
 .flip-back {
-  background: #0A2D81;
-  color: white;
+  background: linear-gradient(135deg, #f0f4ff, #dbe8ff);
+  color: #0A2D81;
   transform: rotateY(180deg);
 }
+
+.icon-backpack {
+  width: 48px;
+  height: 48px;
+  filter: brightness(0) saturate(100%) invert(14%) sepia(100%) saturate(700%) hue-rotate(190deg) brightness(90%) contrast(85%);
+}
+
+.icon-community {
+  width: 48px;
+  height: 48px;
+  filter: brightness(0) saturate(100%) invert(14%) sepia(100%) saturate(700%) hue-rotate(190deg) brightness(90%) contrast(85%);
+}
+
+.icon-academic {
+  width: 48px;
+  height: 48px;
+  filter: brightness(0) saturate(100%) invert(14%) sepia(100%) saturate(700%) hue-rotate(190deg) brightness(90%) contrast(85%);
+}
+
+.icon-housing {
+  width: 48px;
+  height: 48px;
+  filter: brightness(0) saturate(100%) invert(14%) sepia(100%) saturate(700%) hue-rotate(190deg) brightness(90%) contrast(85%);
+}
+
+.icon-finance {
+  width: 48px;
+  height: 48px;
+  filter: brightness(0) saturate(100%) invert(14%) sepia(100%) saturate(700%) hue-rotate(190deg) brightness(90%) contrast(85%);
+}
+
+.icon-health {
+  width: 48px;
+  height: 48px;
+  filter: brightness(0) saturate(100%) invert(14%) sepia(100%) saturate(700%) hue-rotate(190deg) brightness(90%) contrast(85%);
+}
+
+.icon-events {
+  width: 48px;
+  height: 48px;
+  filter: brightness(0) saturate(100%) invert(14%) sepia(100%) saturate(700%) hue-rotate(190deg) brightness(90%) contrast(85%);
+}
+
+.icon-transport {
+  width: 48px;
+  height: 48px;
+  filter: brightness(0) saturate(100%) invert(14%) sepia(100%) saturate(700%) hue-rotate(190deg) brightness(90%) contrast(85%);
+}
+
+.icon-campus {
+  width: 48px;
+  height: 48px;
+  filter: brightness(0) saturate(100%) invert(14%) sepia(100%) saturate(700%) hue-rotate(190deg) brightness(90%) contrast(85%);
+}
+
+.icon-tech {
+  width: 48px;
+  height: 48px;
+  filter: brightness(0) saturate(100%) invert(14%) sepia(100%) saturate(700%) hue-rotate(190deg) brightness(90%) contrast(85%);
+}
+

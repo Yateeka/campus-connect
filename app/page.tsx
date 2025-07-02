@@ -7,57 +7,67 @@ import FlippableCard from './components/FlippableCard';
 
 export default function Dashboard() {
   const items = [
-    {
-      label: "ESSENTIAL & SERVICES",
-      icon: "/backpack.svg",
-      description: "Access food, supplies, immigration help, and more.",
-    },
-    {
-      label: "COMMUNITY & SUPPORT",
-      icon: "/community.svg",
-      description: "Clubs, peer mentoring, and safe spaces.",
-    },
-    {
-      label: "ACADEMIC",
-      icon: "/academic.svg",
-      description: "Resources for tutoring, advising, and course planning.",
-    },
-    {
-      label: "HOUSING & JOBS",
-      icon: "/housing.svg",
-      description: "Find affordable housing and student jobs.",
-    },
-    {
-      label: "FINANCE",
-      icon: "/finance.svg",
-      description: "Help with financial aid, banking, and budgeting.",
-    },
-    {
-      label: "HEALTH",
-      icon: "/health.svg",
-      description: "Physical and mental health support.",
-    },
-    {
-      label: "EVENTS & ACTIVITIES",
-      icon: "/events.svg",
-      description: "Stay updated on campus events and activities.",
-    },
-    {
-      label: "TRANSPORTATION",
-      icon: "/transport.svg",
-      description: "Campus shuttles, public transit info, and more.",
-    },
-    {
-      label: "CAMPUS LIFE",
-      icon: "/campus.svg",
-      description: "Explore clubs, organizations, and student life.",
-    },
-    {
-      label: "TECHNOLOGY & RESOURCES",
-      icon: "/tech.svg",
-      description: "IT support, software, and campus resources.",
-    },
-  ];
+  {
+    label: "ESSENTIAL SERVICES",
+    icon: "/backpack.svg",
+    description:
+      "Stay organized with visa reminders, setup guides (SSN, bank, phone), and 24/7 emergency contacts.",
+  },
+  {
+    label: "COMMUNITY & SUPPORT",
+    icon: "/community.svg",
+    description:
+      "Find your people through cultural clubs, peer mentoring programs, support groups, and safe spaces.",
+  },
+  {
+    label: "ACADEMIC",
+    icon: "/academic.svg",
+    description:
+      "Get academic support with free tutoring, course planning tools, advisor access, and success workshops.",
+  },
+  {
+    label: "HOUSING & JOBS",
+    icon: "/housing.svg",
+    description:
+      "Explore affordable housing, learn how to find student jobs, and understand your work eligibility.",
+  },
+  {
+    label: "FINANCE",
+    icon: "/finance.svg",
+    description:
+      "Manage your money with guidance on budgeting, opening a bank account, and accessing financial aid.",
+  },
+  {
+    label: "HEALTH",
+    icon: "/health.svg",
+    description:
+      "Prioritize your wellness with campus clinics, mental health support, and insurance help.",
+  },
+  {
+    label: "EVENTS & ACTIVITIES",
+    icon: "/events.svg",
+    description:
+      "Stay involved with campus events, cultural festivals, volunteer opportunities, and student meetups.",
+  },
+  {
+    label: "TRANSPORTATION",
+    icon: "/transport.svg",
+    description:
+      "Navigate the city with MARTA tips, campus shuttle maps, and discounted transit passes.",
+  },
+  {
+    label: "CAMPUS LIFE",
+    icon: "/campus.svg",
+    description:
+      "Explore student orgs, leadership programs, and everything else that makes GSU life vibrant.",
+  },
+  {
+    label: "TECHNOLOGY & RESOURCES",
+    icon: "/tech.svg",
+    description:
+      "Access software, Wi-Fi help, printing services, and tech support to power your student life.",
+  },
+];
 
   const [startIndex, setStartIndex] = useState(0);
   const visibleItems = items.slice(startIndex, startIndex + 6);
@@ -71,11 +81,11 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col px-4 sm:px-6 py-8 relative">
+    <div className="min-h-screen flex flex-col px-4 sm:px-6 relative">
       <Navbar />
 
-      <main className="flex-grow pb-[140px]">
-        <div className="flex justify-center items-center space-x-4 sm:space-x-6 max-w-[1200px] w-full mx-auto">
+      <main className="flex-grow flex items-center justify-center pb-[140px]">
+        <div className="flex justify-center items-center space-x-4 sm:space-x-6 max-w-[1200px] w-full px-2">
           <button
             onClick={handlePrev}
             className="text-4xl sm:text-5xl hover:scale-110 transition disabled:opacity-30"
@@ -85,9 +95,9 @@ export default function Dashboard() {
             ◀
           </button>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full px-2 max-w-[960px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-[960px]">
             {visibleItems.map((item, idx) => (
-              <div key={idx} className="flex justify-center h-[260px] sm:h-[300px] lg:h-[280px]">
+              <div key={idx} className="h-[260px] sm:h-[300px] lg:h-[280px]">
                 <FlippableCard
                   label={item.label}
                   icon={item.icon}
