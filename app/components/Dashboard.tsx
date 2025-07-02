@@ -10,7 +10,7 @@ export default function Dashboard() {
   const items = [
     {
       label: "ESSENTIAL & SERVICES",
-      icon: "/backpack.svg",
+      icon: "/backpa ck.svg",
       description: "Access food, supplies, immigration help, and more.",
       link: "/services"
     },

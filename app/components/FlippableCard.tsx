@@ -1,5 +1,7 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 interface FlippableCardProps {
   label: string;
   icon: string;
@@ -8,11 +10,18 @@ interface FlippableCardProps {
 }
 
 export default function FlippableCard({ label, icon, description, link }: FlippableCardProps) {
-  // Generate a class name based on the icon file name
-  const iconClass = `icon-${icon.split('/').pop()?.split('.')[0]}`; // e.g. "icon-backpack"
+  const iconClass = `icon-${icon.split('/').pop()?.split('.')[0]}`;
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(link);
+  };
 
   return (
-    <div className="flip-card w-full h-full cursor-pointer group">
+    <div
+      className="flip-card w-full h-full cursor-pointer group"
+      onClick={handleClick}
+    >
       <div className="flip-inner relative w-full h-full transition-transform duration-1000 transform-style-preserve-3d group-hover:rotate-y-180">
         {/* Front Side */}
         <div className="flip-front absolute w-full h-full backface-hidden flex flex-col items-center justify-center rounded-xl bg-white shadow-md p-4">
