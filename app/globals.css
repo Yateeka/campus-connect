@@ -133,3 +133,11 @@ body {
   filter: brightness(0) saturate(100%) invert(14%) sepia(100%) saturate(700%) hue-rotate(190deg) brightness(90%) contrast(85%);
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+}
+
