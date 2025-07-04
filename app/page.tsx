@@ -1,80 +1,137 @@
 'use client';
+
 import { useState } from 'react';
 import Navbar from './components/Navbar';
 import HelpAssistant from './components/HelpAssistant';
-import Footer from './components/Footer';
+import Footer from './About/Footer';
+import FlippableCard from './components/FlippableCard';
 
 export default function Dashboard() {
-	const items = [
-		{ label: "ESSENTIAL & SERVICES", icon: "/backpack.svg" },
-		{ label: "COMMUNITY & SUPPORT", icon: "/community.svg" },
-		{ label: "ACADEMIC", icon: "/academic.svg" },
-		{ label: "HOUSING & JOBS", icon: "/housing.svg" },
-		{ label: "FINANCE", icon: "/finance.svg" },
-		{ label: "HEALTH", icon: "/health.svg" },
-		{ label: "EVENTS & ACTIVITIES", icon: "/events.svg" },
-		{ label: "TRANSPORTATION", icon: "/transport.svg" },
-		{ label: "CAMPUS LIFE", icon: "/campus.svg" },
-		{ label: "TECHNOLOGY & RESOURCES", icon: "/tech.svg" },
-	];
+  const items = [
+    {
+      label: "ESSENTIAL SERVICES",
+      icon: "/backpack.svg",
+      description:
+        "Stay organized with visa reminders, setup guides (SSN, bank, phone), and 24/7 emergency contacts.",
+      link: "/info/services",
+    },
+    {
+      label: "COMMUNITY & SUPPORT",
+      icon: "/community.svg",
+      description:
+        "Find your people through cultural clubs, peer mentoring programs, support groups, and safe spaces.",
+      link: "/info/community",
+    },
+    {
+      label: "ACADEMIC",
+      icon: "/academic.svg",
+      description:
+        "Get academic support with free tutoring, course planning tools, advisor access, and success workshops.",
+      link: "/info/academic",
+    },
+    {
+      label: "HOUSING & JOBS",
+      icon: "/housing.svg",
+      description:
+        "Explore affordable housing, learn how to find student jobs, and understand your work eligibility.",
+      link: "/info/housing",
+    },
+    {
+      label: "FINANCE",
+      icon: "/finance.svg",
+      description:
+        "Manage your money with guidance on budgeting, opening a bank account, and accessing financial aid.",
+      link: "/info/finance",
+    },
+    {
+      label: "HEALTH",
+      icon: "/health.svg",
+      description:
+        "Prioritize your wellness with campus clinics, mental health support, and insurance help.",
+      link: "/info/health",
+    },
+    {
+      label: "EVENTS & ACTIVITIES",
+      icon: "/events.svg",
+      description:
+        "Stay involved with campus events, cultural festivals, volunteer opportunities, and student meetups.",
+      link: "/info/events",
+    },
+    {
+      label: "TRANSPORTATION",
+      icon: "/transport.svg",
+      description:
+        "Navigate the city with MARTA tips, campus shuttle maps, and discounted transit passes.",
+      link: "/info/transport",
+    },
+    {
+      label: "CAMPUS LIFE",
+      icon: "/campus.svg",
+      description:
+        "Explore student orgs, leadership programs, and everything else that makes GSU life vibrant.",
+      link: "/info/campus",
+    },
+    {
+      label: "TECHNOLOGY & RESOURCES",
+      icon: "/tech.svg",
+      description:
+        "Access software, Wi-Fi help, printing services, and tech support to power your student life.",
+      link: "/info/tech",
+    },
+  ];
 
-	const [startIndex, setStartIndex] = useState(0);
-	const visibleItems = items.slice(startIndex, startIndex + 6);
+  const [startIndex, setStartIndex] = useState(0);
+  const visibleItems = items.slice(startIndex, startIndex + 6);
 
-	const handleNext = () => {
-		if (startIndex + 6 < items.length) {
-			setStartIndex(startIndex + 6);
-		}
-	};
+  const handleNext = () => {
+    if (startIndex + 6 < items.length) setStartIndex(startIndex + 6);
+  };
 
-	const handlePrev = () => {
-		if (startIndex - 6 >= 0) {
-			setStartIndex(startIndex - 6);
-		}
-	};
+  const handlePrev = () => {
+    if (startIndex - 6 >= 0) setStartIndex(startIndex - 6);
+  };
 
-	return (
-		<div className="min-h-screen px-4 sm:px-6 py-6 relative">
-			<Navbar />
+  return (
+    <div className="min-h-screen flex flex-col px-4 sm:px-6 relative">
+      <Navbar />
 
-			<div className="flex flex-col justify-center items-center min-h-[calc(100vh-12rem)]">
-				<div className="flex items-center">
-					<button
-						onClick={handlePrev}
-						className="mr-4 sm:mr-6 text-3xl hover:scale-110 transition disabled:opacity-30"
-						disabled={startIndex === 0}
-					>
-						◀
-					</button>
+      <main className="flex-grow flex items-center justify-center pb-[140px]">
+        <div className="flex justify-center items-center space-x-4 sm:space-x-6 max-w-[1200px] w-full px-2">
+          <button
+            onClick={handlePrev}
+            className="text-4xl sm:text-5xl hover:scale-110 transition disabled:opacity-30"
+            disabled={startIndex === 0}
+            aria-label="Previous page"
+          >
+            ◀
+          </button>
 
-					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6 px-2">
-						{visibleItems.map((item, idx) => (
-							<div
-								key={idx}
-								className="w-full sm:w-[280px] h-[150px] sm:h-[160px] lg:h-[180px] bg-white bg-opacity-70 backdrop-blur-md shadow-lg rounded-2xl flex flex-col items-center justify-center font-semibold text-[#0A2D81] text-center text-base sm:text-lg lg:text-xl hover:scale-105 transition"
-							>
-								<img
-									src={item.icon}
-									alt={item.label}
-									className="w-10 h-10 mb-2"
-								/>
-								<span>{item.label}</span>
-							</div>
-						))}
-					</div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-[960px]">
+            {visibleItems.map((item, idx) => (
+              <div key={idx} className="h-[260px] sm:h-[300px] lg:h-[280px]">
+                <FlippableCard
+                  label={item.label}
+                  icon={item.icon}
+                  description={item.description}
+                  link={item.link} // ✅ Correct path passed here
+                />
+              </div>
+            ))}
+          </div>
 
-					<button
-						onClick={handleNext}
-						className="ml-4 sm:ml-6 text-3xl hover:scale-110 transition disabled:opacity-30"
-						disabled={startIndex + 6 >= items.length}
-					>
-						▶
-					</button>
-				</div>
-			</div>
+          <button
+            onClick={handleNext}
+            className="text-4xl sm:text-5xl hover:scale-110 transition disabled:opacity-30"
+            disabled={startIndex + 6 >= items.length}
+            aria-label="Next page"
+          >
+            ▶
+          </button>
+        </div>
+      </main>
 
-			<HelpAssistant />
-			<Footer />
-		</div>
-	);
+      <HelpAssistant />
+      <Footer />
+    </div>
+  );
 }
