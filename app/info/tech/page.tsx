@@ -2,6 +2,7 @@
 import Navbar from '../../components/Navbar';
 import HelpAssistant from '../../components/HelpAssistant';
 import Link from 'next/link';
+import Footer from '@/app/about/Footer';
 
 export default function ServicesPage() {
   return (
@@ -15,6 +16,7 @@ export default function ServicesPage() {
       <HelpAssistant />
 
       {/* Simple footer with back button */}
+      <Footer/>
       <footer className="text-center py-6 mt-6">
       <Link href="/" passHref>
         <button className="bg-[#0A2D81] text-white px-4 py-2 rounded hover:bg-blue-900 transition duration-300">
