@@ -29,17 +29,16 @@ export default function AboutPage() {
             ✕
           </button>
 
-          <h2 className="text-2xl font-bold text-[#0A2D81] mb-6">Iniciar sesión</h2>
+          <h2 className="text-2xl font-bold text-[#0A2D81] mb-6">Login</h2>
 
-          {/* Dummy login input */}
           <input
             type="text"
-            placeholder="Nombre de usuario"
+            placeholder="Username"
             className="p-4 border rounded-lg text-black text-lg mb-6 w-full"
           />
 
           <button className="bg-[#0A2D81] text-white py-3 rounded-lg font-semibold hover:bg-blue-900 w-full">
-            Ingresar / Registrarse
+            Login / Register
           </button>
         </aside>
       )}
