@@ -1,6 +1,0 @@
-
-    >
-      CAMPUS CONNECT
-    </footer>
-  );
-}

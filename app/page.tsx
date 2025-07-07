@@ -95,100 +95,101 @@ export default function Dashboard() {
   };
 
   return (
-  <div className="min-h-screen flex flex-col px-4 sm:px-6 relative">
-    <Navbar setShowLoginPanel={setShowLoginPanel} />
+    <div className="min-h-screen flex flex-col px-4 sm:px-6 relative">
+      <Navbar setShowLoginPanel={setShowLoginPanel} />
 
-    {/* Main content shifts left when login panel is open */}
-    <div
-      className={`flex-grow max-w-[1200px] mx-auto w-full pt-10 pb-[140px] transition-all duration-500 ease-in-out ${
-        showLoginPanel ? 'pr-[340px]' : ''
-      }`}
-    >
-      <div className="flex justify-center items-center space-x-4 sm:space-x-6 w-full px-2">
-        <button
-          onClick={handlePrev}
-          className="text-4xl sm:text-5xl hover:scale-110 transition disabled:opacity-30"
-          disabled={startIndex === 0}
-          aria-label="Previous page"
-        >
-          ◀
-        </button>
+      {/* Main content shifts left when login panel is open */}
+      <div
+        className={`flex-grow max-w-[1200px] mx-auto w-full pt-10 pb-[140px] transition-all duration-500 ease-in-out ${
+          showLoginPanel ? 'pr-[340px]' : ''
+        }`}
+      >
+        <div className="flex justify-center items-center space-x-4 sm:space-x-6 w-full px-2">
+          <button
+            onClick={handlePrev}
+            className="text-4xl sm:text-5xl hover:scale-110 transition disabled:opacity-30"
+            disabled={startIndex === 0}
+            aria-label="Previous page"
+          >
+            ◀
+          </button>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-[1080px]">
-          {visibleItems.map((item, idx) => (
-            <div key={idx} className="h-[260px] sm:h-[300px] lg:h-[280px]">
-              <FlippableCard
-                label={item.label}
-                icon={item.icon}
-                description={item.description}
-                link={item.link}
-              />
-            </div>
-          ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-[1080px]">
+            {visibleItems.map((item, idx) => (
+              <div key={idx} className="h-[260px] sm:h-[300px] lg:h-[280px]">
+                <FlippableCard
+                  label={item.label}
+                  icon={item.icon}
+                  description={item.description}
+                  link={item.link}
+                />
+              </div>
+            ))}
+          </div>
+
+          <button
+            onClick={handleNext}
+            className="text-4xl sm:text-5xl hover:scale-110 transition disabled:opacity-30"
+            disabled={startIndex + 6 >= items.length}
+            aria-label="Next page"
+          >
+            ▶
+          </button>
         </div>
-
-        <button
-          onClick={handleNext}
-          className="text-4xl sm:text-5xl hover:scale-110 transition disabled:opacity-30"
-          disabled={startIndex + 6 >= items.length}
-          aria-label="Next page"
-        >
-          ▶
-        </button>
       </div>
+
+      <HelpAssistant />
+      <Footer />
+
+      {/* Fixed Login Panel */}
+      {showLoginPanel && (
+        <aside className="fixed top-0 right-0 h-full w-[320px] bg-white shadow-lg p-6 border-l border-gray-300 z-50">
+          <button
+            className="mb-4 text-xl font-bold text-gray-500 hover:text-red-600"
+            onClick={() => setShowLoginPanel(false)}
+          >
+            ✕
+          </button>
+
+          <h2 className="text-2xl font-bold text-[#0A2D81] mb-6">Login</h2>
+
+          <input
+            type="text"
+            placeholder="Username"
+            className="p-4 border rounded-lg text-black text-lg mb-6 w-full"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+
+          <button
+            onClick={handleLogin}
+            className="bg-[#0A2D81] text-white py-3 rounded-lg font-semibold hover:bg-blue-900 w-full mb-4"
+          >
+            Login / Register
+          </button>
+
+          <button
+            onClick={() => {
+              setShowLoginPanel(false);
+              alert('Redirect to chatroom');
+            }}
+            className="w-full border border-[#0A2D81] text-[#0A2D81] py-3 rounded-lg font-medium hover:bg-blue-50 mb-2"
+          >
+            Chatroom
+          </button>
+
+          <button
+            onClick={() => {
+              setShowLoginPanel(false);
+              alert('Redirect to FAQ');
+            }}
+            className="w-full border border-[#0A2D81] text-[#0A2D81] py-3 rounded-lg font-medium hover:bg-blue-50"
+          >
+            FAQ
+          </button>
+        </aside>
+      )}
     </div>
-
-    <HelpAssistant />
-    <Footer />
-
-    {/* Fixed Login Panel */}
-    {showLoginPanel && (
-      <aside className="fixed top-0 right-0 h-full w-[320px] bg-white shadow-lg p-6 border-l border-gray-300 z-50">
-        <button
-          className="mb-4 text-xl font-bold text-gray-500 hover:text-red-600"
-          onClick={() => setShowLoginPanel(false)}
-        >
-          ✕
-        </button>
-
-        <h2 className="text-2xl font-bold text-[#0A2D81] mb-6">Iniciar sesión</h2>
-
-        <input
-          type="text"
-          placeholder="Nombre de usuario"
-          className="p-4 border rounded-lg text-black text-lg mb-6 w-full"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-
-        <button
-          onClick={handleLogin}
-          className="bg-[#0A2D81] text-white py-3 rounded-lg font-semibold hover:bg-blue-900 w-full mb-4"
-        >
-          Ingresar / Registrarse
-        </button>
-
-        <button
-          onClick={() => {
-            setShowLoginPanel(false);
-            alert('Redirect to chatroom');
-          }}
-          className="w-full border border-[#0A2D81] text-[#0A2D81] py-3 rounded-lg font-medium hover:bg-blue-50 mb-2"
-        >
-          Chatroom
-        </button>
-
-        <button
-          onClick={() => {
-            setShowLoginPanel(false);
-            alert('Redirect to FAQ');
-          }}
-          className="w-full border border-[#0A2D81] text-[#0A2D81] py-3 rounded-lg font-medium hover:bg-blue-50"
-        >
-          FAQ
-        </button>
-      </aside>
-    )}
-  </div>
-);
+  );
 }
+
